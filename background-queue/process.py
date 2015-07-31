@@ -81,3 +81,4 @@ class TimedThread(object):
 	def stop(self):
 		'''Stop the timed thread'''
 		self.shouldRun = False
+		self.thread.cancel()
