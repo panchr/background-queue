@@ -38,13 +38,13 @@ class BackgroundQueueProcessor(Queue):
 			if self.condition():
 				success = self.process_one()
 				if not success:
-					self.queue.put(self.current, False)
+					self.put(self.current, False)
 				self.current = None
-				self.queue.task_done() # need to mark the task as done even if it did not succeed
+				self.task_done() # need to mark the task as done even if it did not succeed
 				return self.process_queue() # run the process again to try to process another value if possible
 		else:
 			try:
-				self.current = self.queue.get(False)
+				self.current = self.get(False)
 			except Empty:
 				self.current = None
 				return False
@@ -81,3 +81,4 @@ class TimedThread(object):
 	def stop(self):
 		'''Stop the timed thread'''
 		self.shouldRun = False
+		self.thread.cancel()
