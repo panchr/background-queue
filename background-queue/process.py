@@ -26,11 +26,11 @@ class BackgroundQueueProcessor(Queue):
 
 	def condition(self):
 		'''Conditional execution of the process'''
-		raise NotImplementedError("BackgroundQueueProcessor.condition should be overriden in child classes")
+		raise NotImplementedError("BackgroundQueueProcessor.condition should be overridden in child classes")
 
 	def process_one(self):
 		'''Process self.current, the current object in the queue'''
-		raise NotImplementedError("BackgroundQueueProcessor.condition should be overriden in child classes")
+		raise NotImplementedError("BackgroundQueueProcessor.condition should be overridden in child classes")
 
 	def process_queue(self):
 		'''Process the queue, one object at a time'''
